@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+
+/* React Flow's stylesheet must land in the base layer and after Tailwind, so
+   that utility classes can override it and Preflight cannot strip the canvas
+   controls' own styling. */
+@layer base {
+  @import '@xyflow/react/dist/style.css';
+}
+
+@theme {
+  --color-surface: #ffffff;
+  --color-surface-muted: #eef1f6;
+  --color-ink: #141b28;
+  --color-ink-muted: #5c6578;
+  --color-on-ink: #ffffff;
+  --color-line: #d8dee8;
+  --color-accent: #4f6bed;
+  --color-accent-hover: #3f57c9;
+  --color-grid-dot: #b8c0d0;
+
+  --color-cat-io: #0d9488;
+  --color-cat-ai: #7c3aed;
+  --color-cat-logic: #d97706;
+  --color-cat-data: #2563eb;
+  --color-cat-utility: #64748b;
+
+  --radius-node: 10px;
+
+  --shadow-node: 0 1px 2px rgba(16, 24, 40, 0.06), 0 2px 6px rgba(16, 24, 40, 0.05);
+  --shadow-raised: 0 8px 24px rgba(16, 24, 40, 0.1);
+
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer components {
+  .pipeline-canvas .react-flow__pane {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(79, 107, 237, 0.04), transparent 42%),
+      var(--color-surface-muted);
+  }
+
+  .react-flow__edge.selected .react-flow__edge-path {
+    stroke: var(--color-accent);
+  }
+
+  /* Custom nodes draw their own selection border; hide RF's overlay rect. */
+  .pipeline-canvas .react-flow__nodesselection {
+    display: none;
+  }
+
+  .react-flow__handle {
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--color-surface);
+    background: var(--color-accent);
+    z-index: 20;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+
+  .pipeline-canvas .react-flow__node {
+    overflow: visible;
+  }
+
+  .react-flow__handle-left {
+    transform: translate(-50%, -50%) scale(var(--handle-scale, 1));
+  }
+
+  .react-flow__handle-right {
+    transform: translate(50%, -50%) scale(var(--handle-scale, 1));
+  }
+
+  .react-flow__handle:hover,
+  .react-flow__handle.connectingfrom,
+  .react-flow__handle.connectingto,
+  .react-flow__handle.valid {
+    --handle-scale: 1.45;
+    box-shadow: 0 0 0 3px rgba(79, 107, 237, 0.2);
+  }
+
+  .react-flow__minimap {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-node);
+    box-shadow: var(--shadow-node);
+    overflow: hidden;
+    background: var(--color-surface);
+  }
+
+  .canvas-locked .react-flow__pane {
+    cursor: grab;
+  }
+
+  .canvas-locked .react-flow__pane:active {
+    cursor: grabbing;
+  }
+
+  @media (max-width: 767px) {
+    .react-flow-minimap-responsive {
+      display: none;
+    }
+
+    .react-flow__handle {
+      width: 12px;
+      height: 12px;
+    }
+
+    .react-flow__handle:hover,
+    .react-flow__handle.connectingfrom,
+    .react-flow__handle.connectingto,
+    .react-flow__handle.valid {
+      --handle-scale: 1.55;
+    }
+  }
+}
+
+@layer base {
+  body {
+    margin: 0;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
