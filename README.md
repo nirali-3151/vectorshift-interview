@@ -10,7 +10,9 @@ and submit the graph for analysis.
 
 ## Demo
 
-![Pipeline builder walkthrough](docs/nirali_diyora_screenrecording.mp4)
+https://github.com/user-attachments/assets/8cffd8c0-17cf-4d2e-87bc-716e801b481f
+
+
 
 ## Running it
 
