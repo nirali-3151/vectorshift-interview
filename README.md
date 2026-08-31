@@ -8,11 +8,6 @@ and submit the graph for analysis.
 - `backend/` — FastAPI service that counts a submitted pipeline and reports
   whether it is a directed acyclic graph.
 
-## Demo
-
-https://github.com/user-attachments/assets/8cffd8c0-17cf-4d2e-87bc-716e801b481f
-
-
 
 ## Running it
 
