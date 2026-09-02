@@ -14,8 +14,6 @@ __pycache__/
 .pytest_cache/
 
 # Environment
-.env
-.env.local
 
 # OS / editor
 .DS_Store
@@ -23,3 +21,4 @@ __pycache__/
 
 # Archives
 *.zip
+config.bat
